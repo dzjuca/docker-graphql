@@ -23,8 +23,12 @@ jobs:
       with: 
         major_pattern: "major:"
         minor_pattern: "feat:"
-        format: "${major}.${minor}.${patch}-prerelease${increment}"
+        version_format: "${major}.${minor}.${patch}-prerelease${increment}"
         id: version
+
+    - name: Debug version
+      run: |
+        echo "Debug: version output is ${{ steps.version.outputs.version }}"
         
     - name: Docker login
       env:
